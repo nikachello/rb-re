@@ -7,6 +7,7 @@ module.exports = {
       },
       colors: {
         mainRed: "#F93B1D",
+        secondaryText: "#808A93",
       },
       fontFamily: {
         firago: ["Firago", "sans-serif"],

@@ -1,15 +1,20 @@
 import { Bed } from "react-ionicons";
+import { Link } from "react-router-dom";
 
 export function Card() {
   return (
-    <div className="font-firago border rounded-2xl transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-black/20 hover:cursor-pointer">
+    <Link
+      to="listing/1"
+      className="font-firago border rounded-2xl transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-black/20 hover:cursor-pointer"
+    >
       <div className="relative max-w-[384px] max-h-[455px]">
         <img
           src="estates/home.png"
           alt="Estate Photo"
           className="w-full h-full object-cover"
         />
-        <div className="absolute top-7 left-7 px-6 py-2 bg-white bg-opacity-75 bg-[#02152680] rounded-3xl px-3 py-2">
+
+        <div className="absolute top-7 left-7 px-6 py-2 bg-white bg-opacity-75 bg-[#021526] rounded-3xl px-3 py-2">
           <p className="text-white">იყიდება</p>
         </div>
       </div>
@@ -42,6 +47,6 @@ export function Card() {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

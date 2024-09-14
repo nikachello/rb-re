@@ -7,16 +7,16 @@ import { Card } from "../../components/ui/card/Card";
 
 export function Home() {
   return (
-    <div className="px-layout">
-      <div className="flex">
-        <div className="flex-1 mt-[70px] flex flex-col items-start gap-3">
+    <>
+      <div className="flex mt-[50px]">
+        <div className="flex-1 flex flex-col items-start gap-3">
           <FilterList filters={homeFilterOptions} />
           <div className="flex gap-3">
             <ChoosenFilter filter={{ label: "თბილისი" }} />
             <ChoosenFilter filter={{ label: "2 საძინებელი" }} />
           </div>
         </div>
-        <div className="flex mt-[70px] flex gap-3">
+        <div className="flex  flex gap-3">
           <Button type="main" Icon={Plus} text="ლისტინგის დამატება" />
           <Button type="secondary" Icon={Plus} text="აგენტის დამატება" />
         </div>
@@ -32,6 +32,6 @@ export function Home() {
         <Card />
         <Card />
       </div>
-    </div>
+    </>
   );
 }
