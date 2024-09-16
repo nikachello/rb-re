@@ -1,9 +1,10 @@
 import { IButtonProps } from "./button.type";
 
-export function Button({ type, text, Icon }: IButtonProps) {
+export function Button({ type, text, Icon, onClick }: IButtonProps) {
   return (
     <div className="inline-block">
       <a
+        onClick={onClick}
         className={`p-3 font-firago rounded-xl block cursor-pointer flex items-center gap-2  inline-block ${
           type === "main"
             ? "text-white bg-mainRed"

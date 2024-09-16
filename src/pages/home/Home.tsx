@@ -4,11 +4,15 @@ import { ChoosenFilter } from "../../components/ui/filter/choosenFilter/ChoosenF
 import { FilterList } from "../../components/ui/filter/filterList/FilterList";
 import { homeFilterOptions } from "./home.data";
 import { Card } from "../../components/ui/card/Card";
+import { Modal } from "../../components/ui/modal/modal";
+import { useState } from "react";
 
 export function Home() {
+  const [agentModal, setAgentModal] = useState(false);
+
   return (
     <>
-      <div className="flex mt-[50px]">
+      <div className="flex mt-[50px] font-firago">
         <div className="flex-1 flex flex-col items-start gap-3">
           <FilterList filters={homeFilterOptions} />
           <div className="flex gap-3">
@@ -18,7 +22,12 @@ export function Home() {
         </div>
         <div className="flex  flex gap-3">
           <Button type="main" Icon={Plus} text="ლისტინგის დამატება" />
-          <Button type="secondary" Icon={Plus} text="აგენტის დამატება" />
+          <Button
+            onClick={() => setAgentModal(true)}
+            type="secondary"
+            Icon={Plus}
+            text="აგენტის დამატება"
+          />
         </div>
       </div>
       <div className="mt-5 grid grid-cols-4 gap-2">
@@ -32,6 +41,11 @@ export function Home() {
         <Card />
         <Card />
       </div>
+      {agentModal && (
+        <Modal onClick={() => setAgentModal(false)}>
+          <div>გსურთ წაშალოთ ლისტინგი?</div>
+        </Modal>
+      )}
     </>
   );
 }
