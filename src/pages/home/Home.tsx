@@ -21,7 +21,12 @@ export function Home() {
           </div>
         </div>
         <div className="flex  flex gap-3">
-          <Button type="main" Icon={Plus} text="ლისტინგის დამატება" />
+          <Button
+            to="/listing/add"
+            type="main"
+            Icon={Plus}
+            text="ლისტინგის დამატება"
+          />
           <Button
             onClick={() => setAgentModal(true)}
             type="secondary"

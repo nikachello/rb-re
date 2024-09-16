@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 export function Card() {
   return (
     <Link
-      to="listing/1"
-      className="font-firago border rounded-2xl transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-black/20 hover:cursor-pointer"
+      to="/listing/1"
+      className="inline-block font-firago border rounded-2xl transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-black/20 hover:cursor-pointer"
     >
       <div className="relative max-w-[384px] max-h-[455px]">
         <img
-          src="estates/home.png"
+          src="/estates/home.png"
           alt="Estate Photo"
           className="w-full h-full object-cover"
         />
@@ -23,7 +23,7 @@ export function Card() {
         <div className="flex items-center mt-2">
           <img
             className="w-4 h-4 mr-2 object-contain"
-            src="icons/mapPin.png"
+            src="/icons/mapPin.png"
             alt="Location Icon"
           />
           <p>თბილისი, ი. ჭავჭავაძის 53</p>
@@ -36,13 +36,13 @@ export function Card() {
           <div className="flex items-center">
             <img
               className="w-4 h-4 mr-2"
-              src="icons/area.png"
+              src="/icons/area.png"
               alt="Area Icon"
             />
             <span>2</span>
           </div>
           <div className="flex items-center">
-            <img className="w-4 h-4 mr-2" src="icons/zip.png" alt="Zip Icon" />
+            <img className="w-4 h-4 mr-2" src="/icons/zip.png" alt="Zip Icon" />
             <span>2</span>
           </div>
         </div>

@@ -1,11 +1,13 @@
+import { Link } from "react-router-dom";
 import { IButtonProps } from "./button.type";
 
-export function Button({ type, text, Icon, onClick }: IButtonProps) {
+export function Button({ type, text, Icon, onClick, to = "" }: IButtonProps) {
   return (
     <div className="inline-block">
-      <a
+      <Link
+        to={to}
         onClick={onClick}
-        className={`p-3 font-firago rounded-xl block cursor-pointer flex items-center gap-2  inline-block ${
+        className={`p-3 font-firago rounded-xl block cursor-pointer flex items-center gap-2 inline-block ${
           type === "main"
             ? "text-white bg-mainRed"
             : "text-mainRed border border-mainRed"
@@ -13,7 +15,7 @@ export function Button({ type, text, Icon, onClick }: IButtonProps) {
       >
         {Icon && <Icon />}
         {text}
-      </a>
+      </Link>
     </div>
   );
 }

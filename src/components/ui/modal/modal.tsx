@@ -1,5 +1,5 @@
 import { X } from "lucide-react";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { IModalProps } from "./modal.type";
 
@@ -9,11 +9,31 @@ export function Modal({ onClick, children }: IModalProps) {
   const el = document.createElement("div");
 
   useEffect(() => {
+    document.body.style.overflow = "hidden";
     modalRoot?.appendChild(el);
     return () => {
+      document.body.style.overflow = "";
       modalRoot?.removeChild(el);
     };
   }, [el, modalRoot]);
+
+  //   escape chaxurva
+
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        onClick();
+      }
+    },
+    [onClick]
+  );
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [handleKeyDown]);
 
   return createPortal(
     <div

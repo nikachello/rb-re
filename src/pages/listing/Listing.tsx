@@ -2,11 +2,14 @@ import { Mail, Phone } from "lucide-react";
 import { ArrowBack, Bed } from "react-ionicons";
 import { Link, useParams } from "react-router-dom";
 import { Button } from "../../components/ui/button/Button";
+import { useState } from "react";
+import { Modal } from "../../components/ui/modal/modal";
+import { Slider } from "../../components/ui/slider/Slider";
 
 export function Listing() {
-  const { id } = useParams<{ id: string }>(); // Define the type for useParams
+  const { id } = useParams<{ id: string }>();
 
-  // Check if `id` is a valid number
+  // ვნახოთ id ციფრია და არსებობს თუ არა ასეთი განცხადება
   const numericId = Number(id);
 
   if (!id || isNaN(numericId)) {
@@ -16,6 +19,8 @@ export function Listing() {
       </div>
     );
   }
+
+  const [agentModal, setAgentModal] = useState(false);
 
   return (
     <div className="mt-[50px] font-firago">
@@ -100,10 +105,30 @@ export function Listing() {
             </div>
           </div>
           <div className="inline-block">
-            <Button type="secondary" text="ლისტინგის წაშლა" />
+            <Button
+              onClick={() => setAgentModal(true)}
+              type="secondary"
+              text="ლისტინგის წაშლა"
+            />
           </div>
         </div>
       </div>
+      {agentModal && (
+        <Modal onClick={() => setAgentModal(false)}>
+          <div className="flex flex-col gap-5">
+            <div>გსურთ წაშალოთ ლისტინგი?</div>
+            <div className="flex gap-5">
+              <Button
+                onClick={() => setAgentModal(false)}
+                type="secondary"
+                text="გაუქმება"
+              />
+              <Button type="main" text="დადასტურება" />
+            </div>
+          </div>
+        </Modal>
+      )}
+      <Slider />
     </div>
   );
 }
