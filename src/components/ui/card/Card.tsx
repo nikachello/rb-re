@@ -14,7 +14,7 @@ export function Card() {
           className="w-full h-full object-cover"
         />
 
-        <div className="absolute top-7 left-7 px-6 py-2 bg-white bg-opacity-75 bg-[#021526] rounded-3xl px-3 py-2">
+        <div className="absolute top-7 left-7 px-6 py-2 bg-white bg-opacity-75 bg-[#424547] rounded-3xl px-3 py-2">
           <p className="text-white">იყიდება</p>
         </div>
       </div>

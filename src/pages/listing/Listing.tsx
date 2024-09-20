@@ -128,6 +128,7 @@ export function Listing() {
           </div>
         </Modal>
       )}
+      <h1 className="text-2xl font-medium">ბინები მსგავს ლოკაციაზე</h1>
       <Slider />
     </div>
   );
