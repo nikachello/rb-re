@@ -5,17 +5,21 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 interface FormValues {
-  username: string;
-  dealType: string;
   address: string;
-  region: string;
-  postcode: string;
-  profilePicture: FileList;
-  agent: string;
+  image: string;
+  region_id: number;
+  description: string;
+  city_id: number;
+  zip_code: number;
+  price: string;
+  area: string;
+  bedrooms: string;
+  is_rental: boolean;
+  agent_id: number;
 }
 
 export function AddListing() {
-  const [agents, setAgents] = useState<{ label: string; value: string }[]>([]); // State to store agents
+  const [agents, setAgents] = useState<{ label: string; value: string }[]>([]);
   const {
     control,
     handleSubmit,
@@ -52,8 +56,41 @@ export function AddListing() {
     fetchAgents();
   }, []);
 
-  const onSubmit = (data: FormValues) => {
-    console.log(data);
+  const onSubmit = async (data: FormValues) => {
+    try {
+      const formData = new FormData();
+      formData.append("address", data.address);
+      formData.append("image", data.image); // Ensure this is a File object, not a string
+      formData.append("region_id", data.region_id.toString()); // Convert to string
+      formData.append("description", data.description);
+      formData.append("city_id", data.city_id.toString()); // Convert to string
+      formData.append("zip_code", data.zip_code.toString()); // Convert to string
+      formData.append("price", data.price);
+      formData.append("area", data.area);
+      formData.append("bedrooms", data.bedrooms);
+      formData.append("is_rental", data.is_rental ? "true" : "false"); // Convert boolean to string
+      formData.append("agent_id", data.agent_id.toString()); // Convert to string
+      // if (data.profilePicture.length > 0) {
+      //   formData.append("profilePicture", data.profilePicture[0]);
+      // }
+
+      const response = await axios.post(
+        "https://api.real-estate-manager.redberryinternship.ge/api/real-estates",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: "Bearer 9d10918c-e1ae-4e20-9ffd-a4f153673508",
+          },
+        }
+      );
+
+      if (response.status === 201) {
+        console.log("Listing added successfully:", response.data);
+      }
+    } catch (error) {
+      console.error("Failed to add listing:", error);
+    }
   };
 
   return (
@@ -74,7 +111,6 @@ export function AddListing() {
                       "profilePicture",
                       "agent",
                     ].includes(field.name);
-
                     return (
                       <div
                         className={isFullWidth ? "col-span-2" : ""}
@@ -91,7 +127,7 @@ export function AddListing() {
                           }
                           options={
                             field.name === "agent" ? agents : field.options
-                          } // Use fetched agents if the field is agent
+                          }
                           watch={watch}
                         />
                       </div>
