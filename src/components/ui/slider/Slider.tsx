@@ -56,7 +56,7 @@ export function Slider() {
           >
             {groupedCards.map((group, groupIndex) => (
               <div key={groupIndex} className="flex-shrink-0 w-full flex gap-2">
-                {group.map((card, index) => (
+                {group.map((index) => (
                   <div key={index} className="flex-shrink-0 w-1/4">
                     <Card />
                   </div>

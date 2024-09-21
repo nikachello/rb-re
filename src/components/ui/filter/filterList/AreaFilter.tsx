@@ -9,7 +9,6 @@ const AreaFilter = ({
   setMaxArea,
   minOptions,
   maxOptions,
-  title,
 }: AreaFilterProps) => {
   const [error, setError] = useState<string>("");
 
