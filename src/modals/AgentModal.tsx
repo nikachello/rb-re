@@ -51,8 +51,8 @@ export function AgentModal({ onClick }: AgentModalProps) {
 
       // Convert avatar file to Base64 and append
 
-      const base64Avatar = await convertFileToBase64(data.avatar);
-      formData.append("avatar", base64Avatar);
+      //   const base64Avatar = await convertFileToBase64(data.avatar);
+      formData.append("avatar", data.avatar);
 
       // Logging FormData contents for verification
       for (const [key, value] of formData.entries()) {
@@ -65,15 +65,16 @@ export function AgentModal({ onClick }: AgentModalProps) {
         {
           headers: {
             "Content-Type": "multipart/form-data",
+            Authorization: "Bearer 9d10918c-e1ae-4e20-9ffd-a4f153673508",
           },
         }
       );
 
-      if (response.status === 200) {
-        console.log("Agent added successfully", response.data);
+      if (response.status === 201) {
+        console.log("აგენტი წარმატებით დაემატა", response.data);
       }
     } catch (error) {
-      console.error("Failed to add agent", error);
+      console.error("ვერ ვამატებთ აგენტს", error);
     }
   };
 
@@ -100,7 +101,7 @@ export function AgentModal({ onClick }: AgentModalProps) {
 
           <Field
             label="გვარი"
-            name="lastname"
+            name="surname"
             type="text"
             control={control}
             rules={{
@@ -132,7 +133,7 @@ export function AgentModal({ onClick }: AgentModalProps) {
 
           <Field
             label="ტელეფონის ნომერი"
-            name="phoneNum"
+            name="phone"
             type="text"
             control={control}
             rules={{
