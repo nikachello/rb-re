@@ -102,8 +102,12 @@ const Field: React.FC<FieldProps> = ({
           render={({ field }) => (
             <div className="relative border-dashed border-2 border-gray-300 rounded-lg p-8 text-center cursor-pointer">
               <input
-                {...field}
                 type="file"
+                onChange={(e) => {
+                  if (e.target.files && e.target.files.length > 0) {
+                    field.onChange(e.target.files[0]); // Directly set the file object
+                  }
+                }}
                 id={name}
                 className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
               />

@@ -48,3 +48,13 @@ export const homeFilterOptions: IFilterOption[] = [
     ],
   },
 ];
+
+export const regions = [
+  { label: "Region 1", value: "Region 1" },
+  { label: "Region 2", value: "Region 2" },
+];
+
+export const cities = [
+  { label: "City 1", value: "City 1" },
+  { label: "City 2", value: "City 2" },
+];

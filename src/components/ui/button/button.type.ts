@@ -11,4 +11,5 @@ export interface IButtonProps {
   Icon?: LucideIcon;
   onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
   to?: string;
+  submit?: boolean;
 }

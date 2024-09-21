@@ -20,7 +20,7 @@ export function Listing() {
     );
   }
 
-  const [agentModal, setAgentModal] = useState(false);
+  const [listingDeleteModal, setListingDeleteModal] = useState(false);
 
   return (
     <div className="mt-[50px] font-firago">
@@ -106,20 +106,20 @@ export function Listing() {
           </div>
           <div className="inline-block">
             <Button
-              onClick={() => setAgentModal(true)}
+              onClick={() => setListingDeleteModal(true)}
               type="secondary"
               text="ლისტინგის წაშლა"
             />
           </div>
         </div>
       </div>
-      {agentModal && (
-        <Modal onClick={() => setAgentModal(false)}>
+      {listingDeleteModal && (
+        <Modal onClick={() => setListingDeleteModal(false)}>
           <div className="flex flex-col gap-5">
             <div>გსურთ წაშალოთ ლისტინგი?</div>
             <div className="flex gap-5">
               <Button
-                onClick={() => setAgentModal(false)}
+                onClick={() => setListingDeleteModal(false)}
                 type="secondary"
                 text="გაუქმება"
               />

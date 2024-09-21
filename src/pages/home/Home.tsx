@@ -6,6 +6,7 @@ import { homeFilterOptions } from "./home.data";
 import { Card } from "../../components/ui/card/Card";
 import { Modal } from "../../components/ui/modal/modal";
 import { useState } from "react";
+import { AgentModal } from "../../modals/AgentModal";
 
 export function Home() {
   const [agentModal, setAgentModal] = useState(false);
@@ -48,7 +49,7 @@ export function Home() {
       </div>
       {agentModal && (
         <Modal onClick={() => setAgentModal(false)}>
-          <div>გსურთ წაშალოთ ლისტინგი?</div>
+          <AgentModal onClick={() => setAgentModal(false)} />
         </Modal>
       )}
     </>
