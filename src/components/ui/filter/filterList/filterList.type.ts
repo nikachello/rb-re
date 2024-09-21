@@ -8,7 +8,6 @@ export interface IFilterOption {
   options?: FilterOptions[];
   minOptions?: FilterOptions[];
   maxOptions?: FilterOptions[];
-  title: string;
 }
 
 export interface IFilterListProps {

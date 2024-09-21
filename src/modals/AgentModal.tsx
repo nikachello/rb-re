@@ -26,21 +26,6 @@ export function AgentModal({ onClick }: AgentModalProps) {
     reValidateMode: "onChange",
   });
 
-  const convertFileToBase64 = (file: File): Promise<string> => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        // Remove the "data:image/png;base64," part if needed
-        const base64String = reader.result?.toString().split(",")[1];
-        resolve(base64String || "");
-      };
-      reader.onerror = (error) => {
-        reject(error);
-      };
-    });
-  };
-
   const onSubmit = async (data: FormValues) => {
     try {
       const formData = new FormData();

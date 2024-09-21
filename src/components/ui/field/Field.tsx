@@ -13,6 +13,7 @@ const Field: React.FC<FieldProps> = ({
 }) => {
   const [isTyping, setIsTyping] = useState(false); // Track if user is typing
 
+  //@ts-ignore
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     field: any
@@ -21,6 +22,7 @@ const Field: React.FC<FieldProps> = ({
     setIsTyping(true);
   };
 
+  //@ts-ignore
   const handleBlur = (field: any) => {
     field.onBlur();
     setIsTyping(false);
