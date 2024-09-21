@@ -1,6 +1,8 @@
 import { useForm } from "react-hook-form";
 import Field from "../../components/ui/field/Field";
 import { formCategories } from "./addListing.data";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 interface FormValues {
   username: string;
@@ -9,9 +11,11 @@ interface FormValues {
   region: string;
   postcode: string;
   profilePicture: FileList;
+  agent: string;
 }
 
 export function AddListing() {
+  const [agents, setAgents] = useState<{ label: string; value: string }[]>([]); // State to store agents
   const {
     control,
     handleSubmit,
@@ -21,6 +25,32 @@ export function AddListing() {
     mode: "all",
     reValidateMode: "onChange",
   });
+
+  useEffect(() => {
+    const fetchAgents = async () => {
+      try {
+        const response = await axios.get(
+          "https://api.real-estate-manager.redberryinternship.ge/api/agents",
+          {
+            headers: {
+              Authorization: "Bearer 9d10918c-e1ae-4e20-9ffd-a4f153673508",
+            },
+          }
+        );
+        const agentOptions = response.data.map(
+          (agent: { id: string; name: string }) => ({
+            label: agent.name,
+            value: agent.id,
+          })
+        );
+        setAgents(agentOptions);
+      } catch (error) {
+        console.error("Failed to fetch agents", error);
+      }
+    };
+
+    fetchAgents();
+  }, []);
 
   const onSubmit = (data: FormValues) => {
     console.log(data);
@@ -59,7 +89,9 @@ export function AddListing() {
                           error={
                             errors[field.name as keyof FormValues]?.message
                           }
-                          options={field.options}
+                          options={
+                            field.name === "agent" ? agents : field.options
+                          } // Use fetched agents if the field is agent
                           watch={watch}
                         />
                       </div>
